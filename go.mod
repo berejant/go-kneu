@@ -1,4 +1,4 @@
-module github.com/berejant/kneu-api
+module github.com/berejant/go-kneu
 
 go 1.19
 
