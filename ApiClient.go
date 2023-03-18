@@ -7,7 +7,7 @@ import (
 )
 
 type ApiClient struct {
-	accessToken string
+	AccessToken string
 }
 
 type apiErrorResponse struct {
@@ -35,7 +35,7 @@ func (client *ApiClient) doRequest(requestUri string, responseInterface any) err
 	var response *http.Response
 
 	request, err := http.NewRequest(http.MethodGet, AuthBaseUri+"/api/"+requestUri, nil)
-	request.Header.Set("Authorization", "Bearer "+client.accessToken)
+	request.Header.Set("Authorization", "Bearer "+client.AccessToken)
 
 	if err == nil {
 		response, err = http.DefaultClient.Do(request)

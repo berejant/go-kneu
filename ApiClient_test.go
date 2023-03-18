@@ -25,7 +25,7 @@ func TestApiClient_GetUserMe(t *testing.T) {
 		}
 
 		client := ApiClient{
-			accessToken: "test-access-token",
+			AccessToken: "test-access-token",
 		}
 
 		gock.New(AuthBaseUri).
@@ -53,7 +53,7 @@ func TestApiClient_GetUserMe(t *testing.T) {
 
 	t.Run("http_error", func(t *testing.T) {
 		client := ApiClient{
-			accessToken: "test-access-token",
+			AccessToken: "test-access-token",
 		}
 
 		gock.New(AuthBaseUri).
@@ -70,7 +70,7 @@ func TestApiClient_GetUserMe(t *testing.T) {
 
 	t.Run("api_error", func(t *testing.T) {
 		client := ApiClient{
-			accessToken: "test-access-token",
+			AccessToken: "test-access-token",
 		}
 
 		gock.New(AuthBaseUri).
