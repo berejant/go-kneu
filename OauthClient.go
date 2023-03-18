@@ -9,8 +9,8 @@ import (
 )
 
 type OauthClient struct {
-	clientId     int
-	clientSecret string
+	ClientId     int
+	ClientSecret string
 }
 
 type OauthTokenResponse struct {
@@ -28,7 +28,7 @@ type oauthErrorResponse struct {
 func (client *OauthClient) GetOauthUrl(redirectUri string, state string) string {
 	return AuthBaseUri +
 		"/oauth?response_type=code" +
-		"&client_id=" + strconv.Itoa(client.clientId) +
+		"&client_id=" + strconv.Itoa(client.ClientId) +
 		"&redirect_uri=" + url.QueryEscape(redirectUri) +
 		"&state=" + url.QueryEscape(state)
 }
@@ -36,8 +36,8 @@ func (client *OauthClient) GetOauthUrl(redirectUri string, state string) string 
 func (client *OauthClient) GetOauthToken(redirectUri string, code string) (tokenResponse OauthTokenResponse, err error) {
 	var response *http.Response
 
-	postData := "client_id=" + strconv.Itoa(client.clientId) +
-		"&client_secret=" + url.QueryEscape(client.clientSecret) +
+	postData := "client_id=" + strconv.Itoa(client.ClientId) +
+		"&client_secret=" + url.QueryEscape(client.ClientSecret) +
 		"&code=" + url.QueryEscape(code) +
 		"&redirect_uri=" + url.QueryEscape(redirectUri) +
 		"&grant_type=authorization_code"

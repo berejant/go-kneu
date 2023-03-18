@@ -8,7 +8,7 @@ import (
 
 func TestOauthClient_GetOauthUrl(t *testing.T) {
 	client := OauthClient{
-		clientId: 100,
+		ClientId: 100,
 	}
 
 	expectedUrl := AuthBaseUri + "/oauth?response_type=code&client_id=100&redirect_uri=http%3A%2F%2Fself%2Fredirect.html&state=state88"
@@ -40,8 +40,8 @@ func TestOauthClient_GetOauthToken(t *testing.T) {
 			}`)
 
 		client := OauthClient{
-			clientId:     clientId,
-			clientSecret: clientSecret,
+			ClientId:     clientId,
+			ClientSecret: clientSecret,
 		}
 
 		tokenResponse, err := client.GetOauthToken(redirectUri, "test_code")
@@ -61,8 +61,8 @@ func TestOauthClient_GetOauthToken(t *testing.T) {
 			Reply(500)
 
 		client := OauthClient{
-			clientId:     clientId,
-			clientSecret: clientSecret,
+			ClientId:     clientId,
+			ClientSecret: clientSecret,
 		}
 
 		_, err := client.GetOauthToken(redirectUri, "test_code")
@@ -83,8 +83,8 @@ func TestOauthClient_GetOauthToken(t *testing.T) {
 			}`)
 
 		client := OauthClient{
-			clientId:     clientId,
-			clientSecret: clientSecret,
+			ClientId:     clientId,
+			ClientSecret: clientSecret,
 		}
 
 		_, err := client.GetOauthToken(redirectUri, "test_code")
