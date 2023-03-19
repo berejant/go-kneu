@@ -11,6 +11,7 @@ import (
 type OauthClient struct {
 	ClientId     int
 	ClientSecret string
+	BaseUri      string
 }
 
 type OauthTokenResponse struct {
@@ -26,7 +27,11 @@ type oauthErrorResponse struct {
 }
 
 func (client *OauthClient) GetOauthUrl(redirectUri string, state string) string {
-	return AuthBaseUri +
+	if client.BaseUri == "" {
+		client.BaseUri = AuthBaseUri
+	}
+
+	return client.BaseUri +
 		"/oauth?response_type=code" +
 		"&client_id=" + strconv.Itoa(client.ClientId) +
 		"&redirect_uri=" + url.QueryEscape(redirectUri) +
@@ -36,6 +41,10 @@ func (client *OauthClient) GetOauthUrl(redirectUri string, state string) string 
 func (client *OauthClient) GetOauthToken(redirectUri string, code string) (tokenResponse OauthTokenResponse, err error) {
 	var response *http.Response
 
+	if client.BaseUri == "" {
+		client.BaseUri = AuthBaseUri
+	}
+
 	postData := "client_id=" + strconv.Itoa(client.ClientId) +
 		"&client_secret=" + url.QueryEscape(client.ClientSecret) +
 		"&code=" + url.QueryEscape(code) +
@@ -44,7 +53,7 @@ func (client *OauthClient) GetOauthToken(redirectUri string, code string) (token
 
 	if err == nil {
 		response, err = http.Post(
-			AuthBaseUri+"/oauth/token",
+			client.BaseUri+"/oauth/token",
 			"application/x-www-form-urlencoded",
 			strings.NewReader(postData),
 		)

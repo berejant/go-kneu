@@ -8,6 +8,7 @@ import (
 
 type ApiClient struct {
 	AccessToken string
+	BaseUri     string
 }
 
 type apiErrorResponse struct {
@@ -34,7 +35,11 @@ type UserMeResponse struct {
 func (client *ApiClient) doRequest(requestUri string, responseInterface any) error {
 	var response *http.Response
 
-	request, err := http.NewRequest(http.MethodGet, AuthBaseUri+"/api/"+requestUri, nil)
+	if client.BaseUri == "" {
+		client.BaseUri = AuthBaseUri
+	}
+
+	request, err := http.NewRequest(http.MethodGet, client.BaseUri+"/api/"+requestUri, nil)
 	request.Header.Set("Authorization", "Bearer "+client.AccessToken)
 
 	if err == nil {
