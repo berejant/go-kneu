@@ -8,6 +8,11 @@ import (
 	"strings"
 )
 
+type OauthClientInterface interface {
+	GetOauthUrl(redirectUri string, state string) string
+	GetOauthToken(redirectUri string, code string) (tokenResponse OauthTokenResponse, err error)
+}
+
 type OauthClient struct {
 	ClientId     int
 	ClientSecret string

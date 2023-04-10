@@ -6,6 +6,10 @@ import (
 	"strconv"
 )
 
+type ApiClientInterface interface {
+	GetUserMe() (response UserMeResponse, err error)
+}
+
 type ApiClient struct {
 	AccessToken string
 	BaseUri     string
