@@ -18,7 +18,7 @@ func TestOauthClient_GetOauthUrl(t *testing.T) {
 }
 
 func TestOauthClient_GetOauthToken(t *testing.T) {
-	clientId := 100
+	clientId := uint(100)
 	clientSecret := "test_secret"
 	redirectUri := "http://localhost/redirect_uri"
 
@@ -50,7 +50,7 @@ func TestOauthClient_GetOauthToken(t *testing.T) {
 		assert.Equal(t, "00000eb1ed29a47b4c38f9700d49AA00", tokenResponse.AccessToken)
 		assert.Equal(t, "Bearer", tokenResponse.TokenType)
 		assert.Equal(t, 7200, tokenResponse.ExpiresIn)
-		assert.Equal(t, 999, tokenResponse.UserId)
+		assert.Equal(t, uint(999), tokenResponse.UserId)
 	})
 
 	t.Run("http_error", func(t *testing.T) {

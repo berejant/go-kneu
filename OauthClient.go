@@ -14,7 +14,7 @@ type OauthClientInterface interface {
 }
 
 type OauthClient struct {
-	ClientId     int
+	ClientId     uint
 	ClientSecret string
 	BaseUri      string
 }
@@ -23,7 +23,7 @@ type OauthTokenResponse struct {
 	AccessToken string `json:"access_token"`
 	TokenType   string `json:"token_type"`
 	ExpiresIn   int    `json:"expires_in"`
-	UserId      int    `json:"user_id"`
+	UserId      uint   `json:"user_id"`
 }
 
 type oauthErrorResponse struct {
@@ -38,7 +38,7 @@ func (client *OauthClient) GetOauthUrl(redirectUri string, state string) string 
 
 	return client.BaseUri +
 		"/oauth?response_type=code" +
-		"&client_id=" + strconv.Itoa(client.ClientId) +
+		"&client_id=" + strconv.FormatUint(uint64(client.ClientId), 10) +
 		"&redirect_uri=" + url.QueryEscape(redirectUri) +
 		"&state=" + url.QueryEscape(state)
 }
@@ -50,7 +50,7 @@ func (client *OauthClient) GetOauthToken(redirectUri string, code string) (token
 		client.BaseUri = AuthBaseUri
 	}
 
-	postData := "client_id=" + strconv.Itoa(client.ClientId) +
+	postData := "client_id=" + strconv.FormatUint(uint64(client.ClientId), 10) +
 		"&client_secret=" + url.QueryEscape(client.ClientSecret) +
 		"&code=" + url.QueryEscape(code) +
 		"&redirect_uri=" + url.QueryEscape(redirectUri) +
