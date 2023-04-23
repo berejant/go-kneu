@@ -20,7 +20,7 @@ type apiErrorResponse struct {
 }
 
 type UserMeResponse struct {
-	Id         int    `json:"id"`
+	Id         uint   `json:"id"`
 	Email      string `json:"email"`
 	Name       string `json:"name"`
 	LastName   string `json:"last_name"`
@@ -28,12 +28,12 @@ type UserMeResponse struct {
 	MiddleName string `json:"middle_name"`
 	Type       string `json:"type"`
 
-	StudentId int    `json:"student_id"`
-	GroupId   int    `json:"group_id"`
-	Sex       string `json:"sex"`
+	StudentId uint   `json:"student_id"`
+	GroupId   uint   `json:"group_id"`
+	Gender    string `json:"gender"`
 
-	TeacherId    int `json:"teacher_id"`
-	DepartmentId int `json:"department_id"`
+	TeacherId    uint `json:"teacher_id"`
+	DepartmentId uint `json:"department_id"`
 }
 
 func (client *ApiClient) doRequest(requestUri string, responseInterface any) error {

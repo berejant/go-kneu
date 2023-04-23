@@ -19,7 +19,7 @@ func TestApiClient_GetUserMe(t *testing.T) {
 			Type:         "student",
 			StudentId:    123,
 			GroupId:      50,
-			Sex:          "male",
+			Gender:       "male",
 			TeacherId:    0,
 			DepartmentId: 0,
 		}
@@ -42,7 +42,7 @@ func TestApiClient_GetUserMe(t *testing.T) {
 			"type": "student",
 			"student_id": 123,
 			"group_id": 50,
-			"sex": "male"
+			"gender": "male"
 		}`)
 
 		userMe, err := client.GetUserMe()
