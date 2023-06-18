@@ -9,6 +9,8 @@ github.com/klauspost/compress v1.15.9 h1:wKRjX6JRtDdrE9qwa4b/Cip7ACOshUI4smpCQan
 github.com/klauspost/compress v1.15.9/go.mod h1:PhcZ0MbTNciWF3rruxRgKxI5NkcHHrHUDtV4Yw2GlzU=
 github.com/kneu-messenger-pigeon/events v0.1.30 h1:oMfziG1azDVCQAcIi1mmZV1sG+zXJ6uHD6KJxDLurZI=
 github.com/kneu-messenger-pigeon/events v0.1.30/go.mod h1:yPgqpO/+XVOZmTdH8BB4wbE+2/keLNhjorMVzJwHQL8=
+github.com/kneu-messenger-pigeon/events v0.1.33 h1:DduDWEQbC2UzOGaKuqzFZGhX7ed/Y0HSYv4ovJUL740=
+github.com/kneu-messenger-pigeon/events v0.1.33/go.mod h1:yPgqpO/+XVOZmTdH8BB4wbE+2/keLNhjorMVzJwHQL8=
 github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32/go.mod h1:9wM+0iRr9ahx58uYLpLIr5fm8diHn0JbqRycJi6w0Ms=
 github.com/pierrec/lz4/v4 v4.1.15 h1:MO0/ucJhngq7299dKLwIMtgTfbkoSPF6AoMYDd8Q4q0=
 github.com/pierrec/lz4/v4 v4.1.15/go.mod h1:gZWDp/Ze/IJXGXf23ltt2EXimqmTUXEy0GFuRQyBid4=
