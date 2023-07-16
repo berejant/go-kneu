@@ -31,4 +31,8 @@ jobs:
         run: go mod download
 
       - name: Test
-        run: go test -v .
+        run: go test .  -tags test -coverprofile coverage.out -covermode atomic
+
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
